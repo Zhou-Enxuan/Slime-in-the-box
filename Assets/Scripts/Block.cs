@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    private Monster monster;
+    public Monster monster;
 }

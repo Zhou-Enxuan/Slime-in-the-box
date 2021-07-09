@@ -8,23 +8,27 @@ public class Blocks : MonoBehaviour
 
     [SerializeField] private int height;
 
-    private Block[,] allTiles;
+    private Monster[,] allTiles;
 
-    private Block[,] viewTiles;
+    private Monster[,] viewTiles;
+
+    [SerializeField] List<Block> blocks;
 
     private int offset;
     // Start is called before the first frame update
     void Start()
     {
-        allTiles = new Block[width, height];
+        allTiles = new Monster[width, height];
 
-        viewTiles = new Block[3, 3];
+        viewTiles = new Monster[3, 3];
 
         offset = (width - 3) / 2;
 
         Setup();
 
         UpdateViewTiles();
+
+        updateScreen();
     }
 
     void Update()
@@ -38,10 +42,10 @@ public class Blocks : MonoBehaviour
         {
             for(int j = 0; j < height; ++j)
             {
-                if(i != width/2 && j != height/2)
+                if(i != width/2 || j != height/2)
                 {
                     int randomSize = Random.Range(1, 7);
-                    allTiles[i, j].monster = new Monster(randomSize);
+                    allTiles[i, j] = new Monster(randomSize);
                 }
                
             }
@@ -50,11 +54,28 @@ public class Blocks : MonoBehaviour
 
     private void UpdateViewTiles()
     {
-        for(int i = offset -1, _i = 0; i < offset + 3; ++i, ++_i)
+        for(int i = offset, _i = 0; _i < 3; ++i, ++_i)
         {
-            for (int j = offset - 1, _j = 0; j < offset + 3; ++j, ++_j)
+            for (int j = offset, _j = 0; _j < 3; ++j, ++_j)
             {
-                viewTiles[_i, _j] = allTiles[i, j];
+                if (i != width / 2 || j != height / 2)
+                {
+                    viewTiles[_i, _j] = allTiles[i, j];
+                }
+            }
+        }
+    }
+
+    private void updateScreen()
+    {
+        for (int i = 0, blockNum = 0; i < 3; ++i)
+        {
+            for (int j = 0; j < 3; ++j, ++blockNum)
+            {
+                if (i != 1 || j != 1)
+                {
+                    blocks[blockNum].textCom.text = viewTiles[i, j].getSize().ToString();
+                }
             }
         }
     }

@@ -12,4 +12,14 @@ public class Monster
     {
         size = _size;
     }
+
+    ~Monster()
+    {
+        Debug.Log("Monster finalizer is called.");
+    }
+
+    public int getSize()
+    {
+        return size;
+    }
 }

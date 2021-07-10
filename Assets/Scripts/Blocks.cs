@@ -14,6 +14,8 @@ public class Blocks : MonoBehaviour
 
     [SerializeField] List<Block> blocks;
 
+    [SerializeField] private Player player;
+
     private int offset;
     // Start is called before the first frame update
     void Start()
@@ -62,6 +64,11 @@ public class Blocks : MonoBehaviour
                 {
                     viewTiles[_i, _j] = allTiles[i, j];
                 }
+                else
+                {
+                    allTiles[i, j] = null;
+                    viewTiles[_i, _j] = null;
+                }
             }
         }
     }
@@ -76,8 +83,11 @@ public class Blocks : MonoBehaviour
                 {
                     blocks[blockNum].textCom.text = viewTiles[i, j].getSize().ToString();
                 }
+                
             }
         }
+
+        blocks[4].textCom.text = player.size.ToString();
     }
 
     private void moveUp()

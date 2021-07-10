@@ -5,6 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Sprite sprite;
-    [SerializeField] private int size;
+    public int size;
     // Start is called before the first frame update
 }

@@ -99,19 +99,23 @@ public class Blocks : MonoBehaviour
 
     private void updateScreen()
     {
-        for (int i = 0, blockNum = 0; i < 3; ++i)
+        for (int i = 0, blockNum = 0; i < 5; ++i)
         {
-            for (int j = 0; j < 3; ++j, ++blockNum)
+            for (int j = 0; j < 5; ++j, ++blockNum)
             {
-                if (i != 1 || j != 1)
+                if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
-                    blocks[blockNum].textCom.text = viewTiles[i, j].getSize().ToString();
+                    blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
+                }
+                else
+                {
+                    blocks[blockNum].textCom.text = "";
                 }
 
             }
         }
 
-        blocks[4].textCom.text = player.size.ToString();
+        blocks[12].textCom.text = player.size.ToString();
     }
 
     private void moveLeft()

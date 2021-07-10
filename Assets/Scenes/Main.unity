@@ -940,6 +940,8 @@ MonoBehaviour:
   - {fileID: 1001039886}
   - {fileID: 607883487}
   player: {fileID: 2004834324}
+  minSize: 1
+  maxSize: 7
 --- !u!95 &605807875
 Animator:
   serializedVersion: 3

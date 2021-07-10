@@ -21,6 +21,10 @@ public class Blocks : MonoBehaviour
     private int randomSize;
 
     private Animator anim;
+
+    [SerializeField] private int minSize;
+
+    [SerializeField] private int maxSize;
     // Start is called before the first frame update
 
     private void Awake()
@@ -75,7 +79,7 @@ public class Blocks : MonoBehaviour
             {
                 if (i != width / 2 || j != height / 2)
                 {
-                    randomSize = Random.Range(1, 7);
+                    randomSize = Random.Range(minSize, maxSize);
                     allTiles[i, j] = new Monster(randomSize);
                 }
 
@@ -126,7 +130,7 @@ public class Blocks : MonoBehaviour
 
     private void moveLeft()
     {
-        int randomSize = Random.Range(1, 7);
+        int randomSize = Random.Range(minSize, maxSize);
         //补充第一行
         for (int col = 0; col < height; col++) {
             int colLength = width;
@@ -140,7 +144,7 @@ public class Blocks : MonoBehaviour
             randomSize = Random.Range(1, 7);
             allTiles[0, col] = new Monster(randomSize);
         }
-        randomSize = Random.Range(1, 7);
+        randomSize = Random.Range(minSize, maxSize);
         allTiles[width / 2 + 1, height / 2] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())
@@ -168,10 +172,10 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物到最后一行
-            randomSize = Random.Range(1, 7);
+            randomSize = Random.Range(minSize, maxSize);
             allTiles[colLength - 1, col] = new Monster(randomSize);
         }
-        randomSize = Random.Range(1, 7);
+        randomSize = Random.Range(minSize, maxSize);
         allTiles[width / 2 - 1, height / 2] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())
@@ -201,10 +205,10 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物
-            randomSize = Random.Range(1, 7);
+            randomSize = Random.Range(minSize, maxSize);
             allTiles[row, 0] = new Monster(randomSize);
         }
-        randomSize = Random.Range(1, 7);
+        randomSize = Random.Range(minSize, maxSize);
         allTiles[width / 2, height / 2 + 1] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())
@@ -232,10 +236,10 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物
-            randomSize = Random.Range(1, 7);
+            randomSize = Random.Range(minSize, maxSize);
             allTiles[row, rowLength - 1] = new Monster(randomSize);
         }
-        randomSize = Random.Range(1, 7);
+        randomSize = Random.Range(minSize, maxSize);
         allTiles[width / 2, height / 2 - 1] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())

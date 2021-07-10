@@ -82,7 +82,7 @@ public class Blocks : MonoBehaviour
             {
                 if (i != width / 2 || j != height / 2)
                 {
-                    CalculateMonsterSize();
+                    monsterSize = CalculateMonsterSize();
                     allTiles[i, j] = new Monster(monsterSize);
                 }
 
@@ -144,7 +144,7 @@ public class Blocks : MonoBehaviour
 
     private void moveLeft()
     {
-        int randomSize = Random.Range(minSize, maxSize);
+        int randomSize = CalculateMonsterSize();
         //补充第一行
         for (int col = 0; col < height; col++) {
             int colLength = width;
@@ -155,19 +155,19 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物
-            randomSize = Random.Range(1, 7);
+            randomSize = CalculateMonsterSize();
             allTiles[0, col] = new Monster(randomSize);
         }
-        randomSize = Random.Range(minSize, maxSize);
+        randomSize = CalculateMonsterSize();
         allTiles[width / 2 + 1, height / 2] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
-            player.size += allTiles[width / 2, height / 2].getSize();
+            player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         else
         {
-            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
+            player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
         }
         UpdateViewTiles();
         anim.SetTrigger("Left");
@@ -186,19 +186,19 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物到最后一行
-            randomSize = Random.Range(minSize, maxSize);
+            randomSize = CalculateMonsterSize();
             allTiles[colLength - 1, col] = new Monster(randomSize);
         }
-        randomSize = Random.Range(minSize, maxSize);
+        randomSize = CalculateMonsterSize();
         allTiles[width / 2 - 1, height / 2] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
-            player.size += allTiles[width / 2, height / 2].getSize();
+            player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         else
         {
-            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
+            player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
         }
         UpdateViewTiles();
         anim.SetTrigger("Right");
@@ -219,19 +219,19 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物
-            randomSize = Random.Range(minSize, maxSize);
+            randomSize = CalculateMonsterSize();
             allTiles[row, 0] = new Monster(randomSize);
         }
-        randomSize = Random.Range(minSize, maxSize);
+        randomSize = CalculateMonsterSize();
         allTiles[width / 2, height / 2 + 1] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
-            player.size += allTiles[width / 2, height / 2].getSize();
+            player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         else
         {
-            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
+            player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
         }
         UpdateViewTiles();
         anim.SetTrigger("Up");
@@ -250,19 +250,19 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物
-            randomSize = Random.Range(minSize, maxSize);
+            randomSize = CalculateMonsterSize();
             allTiles[row, rowLength - 1] = new Monster(randomSize);
         }
-        randomSize = Random.Range(minSize, maxSize);
+        randomSize = CalculateMonsterSize();
         allTiles[width / 2, height / 2 - 1] = new Monster(randomSize);
 
         if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
-            player.size += allTiles[width / 2, height / 2].getSize();
+            player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         else
         {
-            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
+            player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
         }
         UpdateViewTiles();
         anim.SetTrigger("Down");
@@ -305,7 +305,7 @@ public class Blocks : MonoBehaviour
         }
     }
 
-    public void CalculateMonsterSize()
+    public int CalculateMonsterSize()
     {
         //当玩家是1的时候，八个格子70 % 概率出现1
 
@@ -325,7 +325,7 @@ public class Blocks : MonoBehaviour
                 if (Random.value <= 0.7f)
                     monsterSize = 1;
                 else
-                    monsterSize = Random.Range(2, 6);
+                    monsterSize = Random.Range(2, 7);
                 break;
             case 2:
                 if (Random.value <= 0.23f)
@@ -335,7 +335,7 @@ public class Blocks : MonoBehaviour
                 else if (Random.value <= 0.7f)
                     monsterSize = 3;
                 else
-                    monsterSize = Random.Range(4, 6);
+                    monsterSize = Random.Range(4, 7);
                 break;
             case 3:
                 if (Random.value <= 0.18f)
@@ -372,11 +372,16 @@ public class Blocks : MonoBehaviour
                     monsterSize = 5;
                 else if (Random.value <= 0.7f)
                     monsterSize = 6;
+                else
+                    monsterSize = Random.Range(1, 4);
                 break;
             case 6:
                 if (Random.value <= 0.7f)
-                    monsterSize = Random.Range(1, 3);
+                    monsterSize = Random.Range(1, 4);
+                else
+                    monsterSize = Random.Range(1, 6);
                 break;
         }
+        return monsterSize;
     }
 }

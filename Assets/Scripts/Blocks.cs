@@ -27,6 +27,7 @@ public class Blocks : MonoBehaviour
     [SerializeField] private int maxSize;
     // Start is called before the first frame update
 
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -112,13 +113,24 @@ public class Blocks : MonoBehaviour
         {
             for (int j = 0; j < 5; ++j, ++blockNum)
             {
+
                 if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
                     blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
+                    blocks[blockNum].blockType = BlockType.NORMAL;
+                    blocks[blockNum].SetAppear();
+                    if ((blockNum == 7 || blockNum == 11 || blockNum == 13 || blockNum == 17 ))
+                        UpdateBlockType(blockNum, allTiles[i, j].getSize());
+                }
+                else if(blockNum == 12)
+                {
+                    blocks[blockNum].blockType = BlockType.NORMAL;
+                    blocks[blockNum].SetAppear();
                 }
                 else
                 {
                     blocks[blockNum].textCom.text = "";
+                    blocks[blockNum].blockType = BlockType.NORMAL;
                 }
 
             }
@@ -277,5 +289,17 @@ public class Blocks : MonoBehaviour
             result += "\n";
         }
         Debug.Log(result);
+    }
+
+    private void UpdateBlockType(int number, int size)
+    {
+        if (viewTiles != null)
+        {
+            if (size <= player.size)
+                blocks[number].blockType = BlockType.SMALLER;
+            else if (size > player.size)
+                blocks[number].blockType = BlockType.LARGER;
+            blocks[number].SetAppear();
+        }
     }
 }

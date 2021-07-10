@@ -15,7 +15,7 @@ public class Monster
 
     ~Monster()
     {
-        Debug.Log("Monster finalizer is called.");
+        //Debug.Log("Monster finalizer is called.");
     }
 
     public int getSize()

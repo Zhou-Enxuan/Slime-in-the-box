@@ -41,20 +41,24 @@ public class Blocks : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             moveRight();
+            printArray();
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             moveLeft();
+            printArray();
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             moveUp();
+            printArray();
         }
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             moveDown();
+            printArray();
         }
     }
 
@@ -110,7 +114,7 @@ public class Blocks : MonoBehaviour
         blocks[4].textCom.text = player.size.ToString();
     }
 
-    private void moveRight()
+    private void moveLeft()
     {
         int randomSize = Random.Range(1, 7);
         //补充第一行
@@ -118,7 +122,7 @@ public class Blocks : MonoBehaviour
             int colLength = width;
 
             // shift like normal
-            for (int row = colLength - 1; row > 1; row--) {
+            for (int row = colLength - 1; row > 0; row--) {
                 allTiles[row, col] = allTiles[row - 1, col];
             }
 
@@ -135,13 +139,13 @@ public class Blocks : MonoBehaviour
         }
         else
         {
-            player.size = allTiles[width / 2, height / 2].getSize() - player.size;
+            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
         updateScreen();
     }
 
-    private void moveLeft()
+    private void moveRight()
     {
         //补充最后一行
         for (int col = 0; col < height; col++) {
@@ -165,7 +169,7 @@ public class Blocks : MonoBehaviour
         }
         else
         {
-            player.size = allTiles[width / 2, height / 2].getSize() - player.size;
+            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
         updateScreen();
@@ -173,14 +177,14 @@ public class Blocks : MonoBehaviour
 
     }
 
-    private void moveDown()
+    private void moveUp()
     {
         //补充第一列
         for (int row = 0; row < width; row++) {
             int rowLength = height;
 
             //复制先前的
-            for (int col = rowLength - 1; col > 1; col--) {
+            for (int col = rowLength - 1; col > 0; col--) {
                 allTiles[row, col] = allTiles[row, col - 1];
             }
 
@@ -197,13 +201,13 @@ public class Blocks : MonoBehaviour
         }
         else
         {
-            player.size = allTiles[width / 2, height / 2].getSize() - player.size;
+            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
         updateScreen();
     }
 
-    private void moveUp()
+    private void moveDown()
     {
         //补充最后一列
         for (int row = 0; row < width; row++) {
@@ -227,7 +231,7 @@ public class Blocks : MonoBehaviour
         }
         else
         {
-            player.size = allTiles[width / 2, height / 2].getSize() - player.size;
+            player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
         updateScreen();

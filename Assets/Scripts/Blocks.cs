@@ -19,7 +19,15 @@ public class Blocks : MonoBehaviour
     private int offset;
 
     private int randomSize;
+
+    private Animator anim;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
         allTiles = new Monster[width, height];
@@ -41,24 +49,21 @@ public class Blocks : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             moveRight();
-            printArray();
+            anim.SetTrigger("Right");
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             moveLeft();
-            printArray();
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             moveUp();
-            printArray();
         }
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             moveDown();
-            printArray();
         }
     }
 
@@ -146,7 +151,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
-        updateScreen();
+        //updateScreen();
     }
 
     private void moveRight()
@@ -176,7 +181,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
-        updateScreen();
+        //updateScreen();
 
 
     }
@@ -208,7 +213,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
-        updateScreen();
+        //updateScreen();
     }
 
     private void moveDown()
@@ -238,7 +243,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
-        updateScreen();
+        //updateScreen();
     }
 
     private void printArray()

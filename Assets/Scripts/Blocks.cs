@@ -92,21 +92,69 @@ public class Blocks : MonoBehaviour
 
     private void moveUp()
     {
+        //补充第一行
+        for (int col = 0; col < allTiles.length; col++) {
+            int colLength = allTiles[col].length;
 
+            // shift like normal
+            for (int row = colLength; row > 1; row--) {
+                allTiles[row][col] = allTiles[row - 1][col];
+            }
+
+            //添加新的怪物
+            int randomSize = Random.Range(1, 7);
+            allTiles[0][col] = new Monster(randomSize);
+        }
     }
 
     private void moveDown()
     {
+        //补充最后一行
+        for (int col = 0; col < allTiles.length; col++) {
+            int colLength = allTiles[col].length;
 
+            // shift like normal
+            for (int row = 0; row < colLength - 1; row++) {
+                allTiles[row][col] = allTiles[row + 1][col];
+            }
+
+            //添加新的怪物到最后一行
+            int randomSize = Random.Range(1, 7);
+            allTiles[colLength][col] = new Monster(randomSize);
+        }
     }
 
     private void moveLeft()
     {
+        //补充第一列
+        for (int row = 0; row < allTiles.length; row++) {
+            int rowLength = allTiles[row].length;
 
+            //复制先前的
+            for (int col = rowLength; col > 1; col--) {
+                allTiles[row][col] = allTiles[row][col - 1];
+            }
+
+            //添加新的怪物
+            int randomSize = Random.Range(1, 7);
+            allTiles[row][0] = new Monster(randomSize);
+        }
     }
 
     private void moveRight()
     {
+        //补充最后一列
+        for (int row = 0; row < allTiles.length; row++) {
+            int rowLength = allTiles[row].length;
 
+            //复制先前的
+            for (int col = 0; col < rowLength - 1; col++) {
+                allTiles[row][col] = allTiles[row][col + 1];
+            }
+
+            //添加新的怪物
+            int randomSize = Random.Range(1, 7);
+            allTiles[row][rowLength] = new Monster(randomSize);
+        }
     }
 }

@@ -22,6 +22,8 @@ public class Blocks : MonoBehaviour
 
     private Animator anim;
 
+    private int monsterSize;
+
     [SerializeField] private int minSize;
 
     [SerializeField] private int maxSize;
@@ -80,8 +82,8 @@ public class Blocks : MonoBehaviour
             {
                 if (i != width / 2 || j != height / 2)
                 {
-                    randomSize = Random.Range(minSize, maxSize);
-                    allTiles[i, j] = new Monster(randomSize);
+                    CalculateMonsterSize();
+                    allTiles[i, j] = new Monster(monsterSize);
                 }
 
             }
@@ -300,6 +302,81 @@ public class Blocks : MonoBehaviour
             else if (size > player.size)
                 blocks[number].blockType = BlockType.LARGER;
             blocks[number].SetAppear();
+        }
+    }
+
+    public void CalculateMonsterSize()
+    {
+        //当玩家是1的时候，八个格子70 % 概率出现1
+
+        //当玩家是2的时候，八个格子70 % 概率出现1，2，3
+
+        //当玩家是3的时候，八个格子90 % 概率出现1，2，3，4，5
+
+        //当玩家是4的时候，八个格子90 % 概率出现2，3，4，5，6
+
+        //当玩家是5的时候，八个格子80 % 概率出现4，5，6
+
+        //当玩家是6的时候，八个格子70 % 概率出现6
+
+        switch (player.size)
+        {
+            case 1:
+                if (Random.value <= 0.7f)
+                    monsterSize = 1;
+                else
+                    monsterSize = Random.Range(2, 6);
+                break;
+            case 2:
+                if (Random.value <= 0.23f)
+                    monsterSize = 1;
+                else if (Random.value <= 0.46f)
+                    monsterSize = 2;
+                else if (Random.value <= 0.7f)
+                    monsterSize = 3;
+                else
+                    monsterSize = Random.Range(4, 6);
+                break;
+            case 3:
+                if (Random.value <= 0.18f)
+                    monsterSize = 1;
+                else if (Random.value <= 0.36f)
+                    monsterSize = 2;
+                else if (Random.value <= 0.54f)
+                    monsterSize = 3;
+                else if (Random.value <= 0.72f)
+                    monsterSize = 4;
+                else if (Random.value <= 0.9f)
+                    monsterSize = 5;
+                else
+                    monsterSize = 6;
+                break;
+            case 4:
+                if (Random.value <= 0.18f)
+                    monsterSize = 6;
+                else if (Random.value <= 0.36f)
+                    monsterSize = 2;
+                else if (Random.value <= 0.54f)
+                    monsterSize = 3;
+                else if (Random.value <= 0.72f)
+                    monsterSize = 4;
+                else if (Random.value <= 0.9f)
+                    monsterSize = 5;
+                else
+                    monsterSize = 1;
+                break;
+            case 5:
+                if (Random.value <= 0.23f)
+                    monsterSize = 4;
+                else if (Random.value <= 0.46f)
+                    monsterSize = 5;
+                else if (Random.value <= 0.7f)
+                    monsterSize = 6;
+                break;
+            case 6:
+                if (Random.value <= 0.7f)
+                    monsterSize = Random.Range(1, 3);
+                break;
         }
     }
 }

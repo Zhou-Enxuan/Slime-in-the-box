@@ -49,7 +49,7 @@ public class Blocks : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             moveRight();
-            anim.SetTrigger("Right");
+            
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -121,6 +121,7 @@ public class Blocks : MonoBehaviour
         }
 
         blocks[12].textCom.text = player.size.ToString();
+        Debug.Log("update");
     }
 
     private void moveLeft()
@@ -151,6 +152,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
+        anim.SetTrigger("Left");
         //updateScreen();
     }
 
@@ -181,6 +183,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
+        anim.SetTrigger("Right");
         //updateScreen();
 
 
@@ -213,6 +216,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
+        anim.SetTrigger("Up");
         //updateScreen();
     }
 
@@ -243,6 +247,7 @@ public class Blocks : MonoBehaviour
             player.size -= (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         UpdateViewTiles();
+        anim.SetTrigger("Down");
         //updateScreen();
     }
 

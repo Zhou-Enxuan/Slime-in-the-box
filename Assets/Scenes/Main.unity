@@ -2378,7 +2378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   GameOver: 0
-  GameOverWindow: {fileID: 0}
+  GameOverWindow: {fileID: 5286323555875870853, guid: c97edd42c7e3fca42b612ecbf661f892, type: 3}
   counter: 0
 --- !u!4 &1266442672
 Transform:

@@ -19,7 +19,10 @@ public class GameOverWindows : MonoBehaviour
         restart = transform.GetChild(2).GetComponent<Button>();
 
         restart.onClick.AddListener(RestartGame);
+        score.text = "Your Score: " + GameManager.instance.score.ToString();
     }
+
+
 
     private void RestartGame()
     {

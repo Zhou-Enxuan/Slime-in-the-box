@@ -13,6 +13,10 @@ public class Block : MonoBehaviour
 
     public BlockType blockType;
 
+    public Animator monsterAnim;
+
+    public MonsterBehaviour monster;
+
     private bool isAppear;
 
     private void Awake()

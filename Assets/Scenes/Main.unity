@@ -663,6 +663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cell (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8670010831805167886, guid: dec060bb72a3246108d267273d1542fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec060bb72a3246108d267273d1542fd, type: 3}
 --- !u!4 &272177032 stripped
@@ -817,6 +821,10 @@ PrefabInstance:
     - target: {fileID: 8314893548056409137, guid: dec060bb72a3246108d267273d1542fd, type: 3}
       propertyPath: m_Name
       value: Cell (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670010831805167886, guid: dec060bb72a3246108d267273d1542fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec060bb72a3246108d267273d1542fd, type: 3}

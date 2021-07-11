@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 3
   anim: {fileID: 4072294127221873898}
+  textMesh: {fileID: 6939237705034315428}
 --- !u!1 &4072294127221873903
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1109531202403507975, guid: 84fb5dab9d9c548caad14f6dffc3081b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -341,7 +342,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &333961292595459495
 MonoBehaviour:

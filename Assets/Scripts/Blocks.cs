@@ -31,6 +31,7 @@ public class Blocks : MonoBehaviour
     [SerializeField] private int maxSize;
 
     private bool control;
+
     // Start is called before the first frame update
 
 

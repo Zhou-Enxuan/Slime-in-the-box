@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Sprite sprite;
     public int size;
 
-    
+    public Animator anim;
+
 }

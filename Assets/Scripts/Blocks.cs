@@ -178,6 +178,8 @@ public class Blocks : MonoBehaviour
             allTiles[0, col] = new Monster(randomSize);
         }
         UpdateViewTiles();
+        player.anim.SetTrigger("Horizontal");
+        player.transform.localScale = new Vector3(-1f, 1f, 1f);
         anim.SetTrigger("Left");
         //updateScreen();
     }
@@ -219,6 +221,8 @@ public class Blocks : MonoBehaviour
             allTiles[colLength - 1, col] = new Monster(randomSize);
         }
         UpdateViewTiles();
+        player.anim.SetTrigger("Horizontal");
+        player.transform.localScale = new Vector3(1f, 1f, 1f);
         anim.SetTrigger("Right");
         //updateScreen();
 
@@ -262,6 +266,7 @@ public class Blocks : MonoBehaviour
             allTiles[row, 0] = new Monster(randomSize);
         }
         UpdateViewTiles();
+        player.anim.SetTrigger("Up");
         anim.SetTrigger("Up");
         //updateScreen();
     }
@@ -304,6 +309,7 @@ public class Blocks : MonoBehaviour
         }
 
         UpdateViewTiles();
+        player.anim.SetTrigger("Down");
         anim.SetTrigger("Down");
         //updateScreen();
     }

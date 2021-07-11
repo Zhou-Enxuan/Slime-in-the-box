@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public int Score;
+
     void Awake()
     {
         if (instance != null)
@@ -29,4 +31,10 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void sceneSwitch()
+    {
+
+    }
+
 }

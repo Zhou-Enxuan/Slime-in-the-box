@@ -29,12 +29,15 @@ public class Blocks : MonoBehaviour
     [SerializeField] private int minSize;
 
     [SerializeField] private int maxSize;
+
+    private bool control;
     // Start is called before the first frame update
 
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        control = true;
     }
 
     void Start()
@@ -55,25 +58,33 @@ public class Blocks : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        if(control)
         {
-            moveRight();
-            
-        }
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            moveLeft();
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                moveRight();
+                control = false;
+
+            }
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                moveLeft();
+                control = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                moveUp();
+                control = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                moveDown();
+                control = false;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            moveUp();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            moveDown();
-        }
     }
 
     private void Setup()
@@ -423,5 +434,10 @@ public class Blocks : MonoBehaviour
                 break;
         }
         return monsterSize;
+    }
+
+    private void UnlockControl()
+    {
+        control = true;
     }
 }

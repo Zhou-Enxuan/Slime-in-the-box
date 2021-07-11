@@ -16,11 +16,20 @@ public class Menu : MonoBehaviour
 
     }
 
-    void PlayGame()
+    public void PlayGame()
     {
-        Debug.Log("gg");
         SceneManager.LoadScene("Main");
 
+    }
+
+    public void CreditPage()
+    {
+        SceneManager.LoadScene("CreditPage");
+    }
+
+    public void BacktoMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 }

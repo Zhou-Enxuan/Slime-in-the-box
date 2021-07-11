@@ -161,11 +161,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1419276801397342458, guid: 45c0357b4e7a54956ad983e4af888725, type: 3}
       propertyPath: m_fontColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1419276801397342458, guid: 45c0357b4e7a54956ad983e4af888725, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6540008982424517406, guid: 45c0357b4e7a54956ad983e4af888725, type: 3}
       propertyPath: monster

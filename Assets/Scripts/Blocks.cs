@@ -27,6 +27,8 @@ public class Blocks : MonoBehaviour
 
     private Animator anim;
 
+    private Block HittingBlock;
+
     private int monsterSize;
 
     [SerializeField] private int minSize;
@@ -100,10 +102,10 @@ public class Blocks : MonoBehaviour
                 if (i != width / 2 || j != height / 2)
                 {
                     monsterSize = CalculateMonsterSize();
-                    allTiles[i, j] = new Monster(monsterSize);
-                    blocks[blockNum].monster.data = allTiles[i, j];
                     randomMonsterId = Random.Range(1, 7);
-                    blocks[blockNum].monsterAnim.SetFloat("Blend", randomMonsterId);
+                    allTiles[i, j] = new Monster(monsterSize, randomMonsterId);
+                    blocks[blockNum].monster.data = allTiles[i, j];
+                    blocks[blockNum].textCom.faceColor = new Color32(255, 255, 255, 0);
                 }
 
             }
@@ -138,7 +140,9 @@ public class Blocks : MonoBehaviour
 
                 if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
-                    blocks[blockNum].textCom.color = new Color(255,255,255,255);
+                    blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
+                    blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
+                    blocks[blockNum].textCom.faceColor = new Color32(255,255,255,255);
                     blocks[blockNum].SetAppear();
                     if ((blockNum == 7 || blockNum == 11 || blockNum == 13 || blockNum == 17 ))
                         UpdateBlockType(blockNum, allTiles[i, j].getSize());
@@ -151,6 +155,8 @@ public class Blocks : MonoBehaviour
                 else
                 {
                     //blocks[blockNum].textCom.text = "";
+                    blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
+                    blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
                     blocks[blockNum].blockType = BlockType.NORMAL;
                 }
 
@@ -163,6 +169,7 @@ public class Blocks : MonoBehaviour
 
     private void moveLeft()
     {
+        HittingBlock = blocks[7];
         int randomSize = CalculateMonsterSize();
         //补充第一行
         for (int col = 0; col < height; col++) {
@@ -187,14 +194,16 @@ public class Blocks : MonoBehaviour
             player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
         }
         randomSize = CalculateMonsterSize();
-        allTiles[width / 2 + 1, height / 2] = new Monster(randomSize);
+        randomMonsterId = Random.Range(1, 7);
+        allTiles[width / 2 + 1, height / 2] = new Monster(randomSize, randomMonsterId);
 
         for (int col = 0; col < height; col++)
         {
             int colLength = width;
             //添加新的怪物
             randomSize = CalculateMonsterSize();
-            allTiles[0, col] = new Monster(randomSize);
+            randomMonsterId = Random.Range(1, 7);
+            allTiles[0, col] = new Monster(randomSize, randomMonsterId);
         }
         UpdateViewTiles();
         player.anim.SetTrigger("Horizontal");
@@ -209,6 +218,7 @@ public class Blocks : MonoBehaviour
 
     private void moveRight()
     {
+        HittingBlock = blocks[17];
         //补充最后一行
         for (int col = 0; col < height; col++) {
             int colLength = width;
@@ -235,13 +245,15 @@ public class Blocks : MonoBehaviour
         }
 
         randomSize = CalculateMonsterSize();
-        allTiles[width / 2 - 1, height / 2] = new Monster(randomSize);
+        randomMonsterId = Random.Range(1, 7);
+        allTiles[width / 2 - 1, height / 2] = new Monster(randomSize, randomMonsterId);
 
         for (int col = 0; col < height; col++)
         {
             int colLength = width;
             randomSize = CalculateMonsterSize();
-            allTiles[colLength - 1, col] = new Monster(randomSize);
+            randomMonsterId = Random.Range(1, 7);
+            allTiles[colLength - 1, col] = new Monster(randomSize, randomMonsterId);
         }
         UpdateViewTiles();
         player.anim.SetTrigger("Horizontal");
@@ -257,6 +269,7 @@ public class Blocks : MonoBehaviour
 
     private void moveUp()
     {
+        HittingBlock = blocks[11];
         //补充第一列
         for (int row = 0; row < width; row++) {
             int rowLength = height;
@@ -281,7 +294,8 @@ public class Blocks : MonoBehaviour
         }
 
         randomSize = CalculateMonsterSize();
-        allTiles[width / 2, height / 2 + 1] = new Monster(randomSize);
+        randomMonsterId = Random.Range(1, 7);
+        allTiles[width / 2, height / 2 + 1] = new Monster(randomSize, randomMonsterId);
 
         for (int row = 0; row < width; row++)
         {
@@ -289,7 +303,8 @@ public class Blocks : MonoBehaviour
 
             //添加新的怪物
             randomSize = CalculateMonsterSize();
-            allTiles[row, 0] = new Monster(randomSize);
+            randomMonsterId = Random.Range(1, 7);
+            allTiles[row, 0] = new Monster(randomSize, randomMonsterId);
         }
         UpdateViewTiles();
         player.anim.SetTrigger("Up");
@@ -304,6 +319,7 @@ public class Blocks : MonoBehaviour
 
     private void moveDown()
     {
+        HittingBlock = blocks[13];
         //补充最后一列
         for (int row = 0; row < width; row++) {
             int rowLength = height;
@@ -328,7 +344,8 @@ public class Blocks : MonoBehaviour
         }
 
         randomSize = CalculateMonsterSize();
-        allTiles[width / 2, height / 2 - 1] = new Monster(randomSize);
+        randomMonsterId = Random.Range(1, 7);
+        allTiles[width / 2, height / 2 - 1] = new Monster(randomSize, randomMonsterId);
 
         for (int row = 0; row < width; row++)
         {
@@ -336,7 +353,8 @@ public class Blocks : MonoBehaviour
 
             //添加新的怪物
             randomSize = CalculateMonsterSize();
-            allTiles[row, rowLength - 1] = new Monster(randomSize);
+            randomMonsterId = Random.Range(1, 7);
+            allTiles[row, rowLength - 1] = new Monster(randomSize, randomMonsterId);
         }
 
         UpdateViewTiles();
@@ -475,5 +493,10 @@ public class Blocks : MonoBehaviour
         {
             GameManager.instance.GameOver = true;
         }
+    }
+
+    private void RunAttackAnim()
+    {
+        HittingBlock.textAnim.SetTrigger("Attack");
     }
 }

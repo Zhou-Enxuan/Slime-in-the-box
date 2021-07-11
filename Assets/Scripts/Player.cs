@@ -13,11 +13,16 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        textMesh.text = size.ToString();
+       
     }
 
     public void ResetSize()
     {
         size = 3;
+    }
+
+    private void updateSizeAnim()
+    {
+        textMesh.text = size.ToString();
     }
 }

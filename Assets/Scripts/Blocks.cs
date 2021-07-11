@@ -454,9 +454,14 @@ public class Blocks : MonoBehaviour
         return monsterSize;
     }
 
-    private void UnlockControl()
+    public void UnlockControl()
     {
         control = true;
+    }
+
+    public void LockControl()
+    {
+        control = false;
     }
 
     private void IsGameOver()

@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     public bool GameOver;
 
+    public GameObject GameOverWindow;
+
+    public bool counter = false;
+
     void Awake()
     {
         if (instance != null)
@@ -25,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        IsGameOver();
+        if(counter == false)
+            IsGameOver(); 
     }
 
     public void sceneSwitch()
@@ -42,8 +47,13 @@ public class GameManager : MonoBehaviour
     {
         if (GameOver)
         {
+            //transform.GetComponent<Blocks>().LockControl();
             Debug.Log("Game Over");
-            Instantiate<>
+            if (counter == false)
+            {
+                Instantiate(GameOverWindow, this.transform.position, this.transform.rotation);
+                counter = true;
+            }
         }
     }
 

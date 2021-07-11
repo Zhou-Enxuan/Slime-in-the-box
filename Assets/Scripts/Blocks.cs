@@ -16,6 +16,8 @@ public class Blocks : MonoBehaviour
 
     [SerializeField] private Player player;
 
+    [SerializeField] private SpriteRenderer playerSprite;
+
     private int offset;
 
     private int randomSize;
@@ -138,7 +140,7 @@ public class Blocks : MonoBehaviour
             }
         }
 
-        blocks[12].textCom.text = player.size.ToString();
+        blocks[12].textCom.text = "";
         Debug.Log("update");
     }
 
@@ -179,7 +181,7 @@ public class Blocks : MonoBehaviour
         }
         UpdateViewTiles();
         player.anim.SetTrigger("Horizontal");
-        player.transform.localScale = new Vector3(-1f, 1f, 1f);
+        playerSprite.flipX = true;
         anim.SetTrigger("Left");
         //updateScreen();
     }
@@ -222,7 +224,7 @@ public class Blocks : MonoBehaviour
         }
         UpdateViewTiles();
         player.anim.SetTrigger("Horizontal");
-        player.transform.localScale = new Vector3(1f, 1f, 1f);
+        playerSprite.flipX = false;
         anim.SetTrigger("Right");
         //updateScreen();
 

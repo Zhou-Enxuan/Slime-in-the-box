@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int Score;
+    public int score;
+
+    public bool GameOver;
 
     void Awake()
     {
@@ -20,21 +22,28 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        IsGameOver();
     }
 
     public void sceneSwitch()
     {
 
+    }
+
+    public void ScoreUp()
+    {
+        score += 1;
+    }
+
+    private void IsGameOver()
+    {
+        if (GameOver)
+        {
+            Debug.Log("Game Over");
+        }
     }
 
 }

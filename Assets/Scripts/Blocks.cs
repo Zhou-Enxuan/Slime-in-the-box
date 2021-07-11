@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Blocks : MonoBehaviour
 {
@@ -100,12 +101,9 @@ public class Blocks : MonoBehaviour
                 {
                     monsterSize = CalculateMonsterSize();
                     allTiles[i, j] = new Monster(monsterSize);
+                    blocks[blockNum].monster.data = allTiles[i, j];
                     randomMonsterId = Random.Range(1, 7);
-                    GameObject monster = Instantiate(Resources.Load<GameObject>("Prefabs/Monster/Monster0" + randomMonsterId.ToString()), Vector3.zero, Quaternion.identity);
-                    monster.GetComponent<MonsterBehaviour>().data = allTiles[i, j];
-                    monster.transform.parent = blocks[blockNum].transform;
-                    monster.transform.position = blocks[blockNum].transform.position;
-                    monster.SetActive(false);
+                    blocks[blockNum].monsterAnim.SetFloat("Blend", randomMonsterId);
                 }
 
             }
@@ -140,9 +138,7 @@ public class Blocks : MonoBehaviour
 
                 if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
-                    //blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
-                    blocks[blockNum].gameObject.transform.GetChild(0).gameObject.SetActive(true);
-                    blocks[blockNum].blockType = BlockType.NORMAL;
+                    blocks[blockNum].textCom.color = new Color(255,255,255,255);
                     blocks[blockNum].SetAppear();
                     if ((blockNum == 7 || blockNum == 11 || blockNum == 13 || blockNum == 17 ))
                         UpdateBlockType(blockNum, allTiles[i, j].getSize());
@@ -252,7 +248,6 @@ public class Blocks : MonoBehaviour
         playerSprite.flipX = false;
         anim.SetTrigger("Right");
         //updateScreen();
-
         //Score Up 
         IsGameOver();
         if (!GameManager.instance.GameOver)

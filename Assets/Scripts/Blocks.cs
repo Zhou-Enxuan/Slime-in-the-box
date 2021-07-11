@@ -153,21 +153,29 @@ public class Blocks : MonoBehaviour
             for (int row = colLength - 1; row > 0; row--) {
                 allTiles[row, col] = allTiles[row - 1, col];
             }
-
-            //添加新的怪物
-            randomSize = CalculateMonsterSize();
-            allTiles[0, col] = new Monster(randomSize);
         }
-        randomSize = CalculateMonsterSize();
-        allTiles[width / 2 + 1, height / 2] = new Monster(randomSize);
 
-        if (player.size >= allTiles[width / 2, height / 2].getSize())
+        if((player.size == 1 || player.size == 6) && player.size == allTiles[width / 2, height / 2].getSize())
+        {
+            player.size = 3;
+        }
+        else if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
             player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         else
         {
             player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
+        }
+        randomSize = CalculateMonsterSize();
+        allTiles[width / 2 + 1, height / 2] = new Monster(randomSize);
+
+        for (int col = 0; col < height; col++)
+        {
+            int colLength = width;
+            //添加新的怪物
+            randomSize = CalculateMonsterSize();
+            allTiles[0, col] = new Monster(randomSize);
         }
         UpdateViewTiles();
         anim.SetTrigger("Left");
@@ -186,19 +194,29 @@ public class Blocks : MonoBehaviour
             }
 
             //添加新的怪物到最后一行
-            randomSize = CalculateMonsterSize();
-            allTiles[colLength - 1, col] = new Monster(randomSize);
         }
-        randomSize = CalculateMonsterSize();
-        allTiles[width / 2 - 1, height / 2] = new Monster(randomSize);
-
-        if (player.size >= allTiles[width / 2, height / 2].getSize())
+        
+        if ((player.size == 1 || player.size == 6) && player.size == allTiles[width / 2, height / 2].getSize())
+        {
+            player.size = 3;
+        }
+        else if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
             player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         else
         {
             player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
+        }
+
+        randomSize = CalculateMonsterSize();
+        allTiles[width / 2 - 1, height / 2] = new Monster(randomSize);
+
+        for (int col = 0; col < height; col++)
+        {
+            int colLength = width;
+            randomSize = CalculateMonsterSize();
+            allTiles[colLength - 1, col] = new Monster(randomSize);
         }
         UpdateViewTiles();
         anim.SetTrigger("Right");
@@ -217,21 +235,31 @@ public class Blocks : MonoBehaviour
             for (int col = rowLength - 1; col > 0; col--) {
                 allTiles[row, col] = allTiles[row, col - 1];
             }
-
-            //添加新的怪物
-            randomSize = CalculateMonsterSize();
-            allTiles[row, 0] = new Monster(randomSize);
         }
-        randomSize = CalculateMonsterSize();
-        allTiles[width / 2, height / 2 + 1] = new Monster(randomSize);
 
-        if (player.size >= allTiles[width / 2, height / 2].getSize())
+        if ((player.size == 1 || player.size == 6) && player.size == allTiles[width / 2, height / 2].getSize())
+        {
+            player.size = 3;
+        }
+        else if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
             player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
         else
         {
             player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
+        }
+
+        randomSize = CalculateMonsterSize();
+        allTiles[width / 2, height / 2 + 1] = new Monster(randomSize);
+
+        for (int row = 0; row < width; row++)
+        {
+            int rowLength = height;
+
+            //添加新的怪物
+            randomSize = CalculateMonsterSize();
+            allTiles[row, 0] = new Monster(randomSize);
         }
         UpdateViewTiles();
         anim.SetTrigger("Up");
@@ -248,15 +276,13 @@ public class Blocks : MonoBehaviour
             for (int col = 0; col < rowLength - 1; col++) {
                 allTiles[row, col] = allTiles[row, col + 1];
             }
-
-            //添加新的怪物
-            randomSize = CalculateMonsterSize();
-            allTiles[row, rowLength - 1] = new Monster(randomSize);
         }
-        randomSize = CalculateMonsterSize();
-        allTiles[width / 2, height / 2 - 1] = new Monster(randomSize);
 
-        if (player.size >= allTiles[width / 2, height / 2].getSize())
+        if ((player.size == 1 || player.size == 6) && player.size == allTiles[width / 2, height / 2].getSize())
+        {
+            player.size = 3;
+        }
+        else if (player.size >= allTiles[width / 2, height / 2].getSize())
         {
             player.size = player.size - (allTiles[width / 2, height / 2].getSize() - player.size);
         }
@@ -264,6 +290,19 @@ public class Blocks : MonoBehaviour
         {
             player.size = player.size + (player.size - allTiles[width / 2, height / 2].getSize());
         }
+
+        randomSize = CalculateMonsterSize();
+        allTiles[width / 2, height / 2 - 1] = new Monster(randomSize);
+
+        for (int row = 0; row < width; row++)
+        {
+            int rowLength = height;
+
+            //添加新的怪物
+            randomSize = CalculateMonsterSize();
+            allTiles[row, rowLength - 1] = new Monster(randomSize);
+        }
+
         UpdateViewTiles();
         anim.SetTrigger("Down");
         //updateScreen();
@@ -322,62 +361,55 @@ public class Blocks : MonoBehaviour
         switch (player.size)
         {
             case 1:
-                if (Random.value <= 0.7f)
+                if (Random.value <= 0.6f)
                     monsterSize = 1;
                 else
                     monsterSize = Random.Range(2, 7);
                 break;
             case 2:
-                if (Random.value <= 0.23f)
-                    monsterSize = 1;
-                else if (Random.value <= 0.46f)
-                    monsterSize = 2;
-                else if (Random.value <= 0.7f)
+                if (Random.value <= 0.1f)
                     monsterSize = 3;
+                else if (Random.value <= 0.15f)
+                    monsterSize = monsterSize = Random.Range(4, 7);
                 else
-                    monsterSize = Random.Range(4, 7);
+                    monsterSize = monsterSize = Random.Range(1, 2);
                 break;
             case 3:
-                if (Random.value <= 0.18f)
-                    monsterSize = 1;
-                else if (Random.value <= 0.36f)
-                    monsterSize = 2;
-                else if (Random.value <= 0.54f)
-                    monsterSize = 3;
-                else if (Random.value <= 0.72f)
-                    monsterSize = 4;
-                else if (Random.value <= 0.9f)
-                    monsterSize = 5;
-                else
+                if (Random.value <= 0.05f)
                     monsterSize = 6;
+                else if (Random.value <= 0.15f)
+                    monsterSize = 5;
+                else if (Random.value <= 0.35f)
+                    monsterSize = 1;
+                else if (Random.value <= 0.55f)
+                    monsterSize = 4;
+                else
+                    monsterSize = monsterSize = Random.Range(2, 4);
                 break;
             case 4:
-                if (Random.value <= 0.18f)
-                    monsterSize = 6;
-                else if (Random.value <= 0.36f)
-                    monsterSize = 2;
-                else if (Random.value <= 0.54f)
-                    monsterSize = 3;
-                else if (Random.value <= 0.72f)
-                    monsterSize = 4;
-                else if (Random.value <= 0.9f)
-                    monsterSize = 5;
-                else
+                if (Random.value <= 0.05f)
                     monsterSize = 1;
+                else if (Random.value <= 0.15f)
+                    monsterSize = 2;
+                else if (Random.value <= 0.35f)
+                    monsterSize = 3;
+                else if (Random.value <= 0.55f)
+                    monsterSize = 6;
+                else
+                    monsterSize = monsterSize = Random.Range(4, 6);
                 break;
             case 5:
-                if (Random.value <= 0.23f)
+                if (Random.value <= 0.1f)
                     monsterSize = 4;
-                else if (Random.value <= 0.46f)
-                    monsterSize = 5;
-                else if (Random.value <= 0.7f)
-                    monsterSize = 6;
-                else
+                else if (Random.value <= 0.15)
                     monsterSize = Random.Range(1, 4);
+                else
+                    monsterSize = Random.Range(5, 7);
+
                 break;
             case 6:
-                if (Random.value <= 0.7f)
-                    monsterSize = Random.Range(1, 4);
+                if (Random.value <= 0.6f)
+                    monsterSize = 6;
                 else
                     monsterSize = Random.Range(1, 6);
                 break;

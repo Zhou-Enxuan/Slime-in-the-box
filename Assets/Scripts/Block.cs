@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum BlockType { NORMAL, SMALLER, LARGER, ITEM };
 public class Block : MonoBehaviour
 {
-    public Text textCom;
+    public TextMeshProUGUI textCom;
 
     public Sprite smaller, larger, normal, item;
 
@@ -14,17 +15,15 @@ public class Block : MonoBehaviour
 
     private bool isAppear;
 
-    Image img;
     private void Awake()
     {
-        img = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         isAppear = false;
     }
     private void Update()
     {
         UpdateColor();
-        if (!isAppear)
-            img.enabled = false;
+        //if (!isAppear)
+        //    img.enabled = false;
 
     }
 
@@ -33,13 +32,13 @@ public class Block : MonoBehaviour
         switch (blockType)
         {
             case BlockType.SMALLER:
-                img.sprite = smaller;
+                GetComponent<SpriteRenderer>().sprite = smaller;
                 break;
             case BlockType.LARGER:
-                img.sprite = larger;
+                GetComponent<SpriteRenderer>().sprite = larger;
                 break;
             case BlockType.ITEM:
-                img.sprite = item;
+                GetComponent<SpriteRenderer>().sprite = item;
                 break;
         }
     }

@@ -22,6 +22,8 @@ public class Blocks : MonoBehaviour
 
     private int randomSize;
 
+    private int randomMonsterId;
+
     private Animator anim;
 
     private int monsterSize;
@@ -90,14 +92,20 @@ public class Blocks : MonoBehaviour
 
     private void Setup()
     {
-        for (int i = 0; i < width; ++i)
+        for (int i = 0, blockNum = 0; i < width; ++i)
         {
-            for (int j = 0; j < height; ++j)
+            for (int j = 0; j < height; ++j, ++blockNum)
             {
                 if (i != width / 2 || j != height / 2)
                 {
                     monsterSize = CalculateMonsterSize();
                     allTiles[i, j] = new Monster(monsterSize);
+                    randomMonsterId = Random.Range(1, 7);
+                    GameObject monster = Instantiate(Resources.Load<GameObject>("Prefabs/Monster/Monster0" + randomMonsterId.ToString()), Vector3.zero, Quaternion.identity);
+                    monster.GetComponent<MonsterBehaviour>().data = allTiles[i, j];
+                    monster.transform.parent = blocks[blockNum].transform;
+                    monster.transform.position = blocks[blockNum].transform.position;
+                    monster.SetActive(false);
                 }
 
             }
@@ -132,7 +140,8 @@ public class Blocks : MonoBehaviour
 
                 if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
-                    blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
+                    //blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
+                    blocks[blockNum].gameObject.transform.GetChild(0).gameObject.SetActive(true);
                     blocks[blockNum].blockType = BlockType.NORMAL;
                     blocks[blockNum].SetAppear();
                     if ((blockNum == 7 || blockNum == 11 || blockNum == 13 || blockNum == 17 ))
@@ -145,14 +154,14 @@ public class Blocks : MonoBehaviour
                 }
                 else
                 {
-                    blocks[blockNum].textCom.text = "";
+                    //blocks[blockNum].textCom.text = "";
                     blocks[blockNum].blockType = BlockType.NORMAL;
                 }
 
             }
         }
 
-        blocks[12].textCom.text = "";
+        //blocks[12].textCom.text = "";
         Debug.Log("update");
     }
 

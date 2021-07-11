@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MonsterBehaviour : MonoBehaviour
 {
-	public Animator fontTextAnim;
+    public Monster data;
 
     public int DiffValue; //player和monster的差值
 

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Monster
 {
-    private Sprite sprite;
-
-    private int size;
+    public int size { get; private set;}
 
     public Monster(int _size)
     {

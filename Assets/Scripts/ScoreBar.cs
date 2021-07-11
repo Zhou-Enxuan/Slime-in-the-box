@@ -5,12 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreBar : MonoBehaviour
 {
-    Text scoreBar;
-
-    private void Awake()
-    {
-        scoreBar = transform.GetChild(0).GetComponent<Text>();
-    }
+    public Text scoreBar;
 
     private void Update()
     {

@@ -16,4 +16,8 @@ public class Player : MonoBehaviour
         textMesh.text = size.ToString();
     }
 
+    public void ResetSize()
+    {
+        size = 3;
+    }
 }

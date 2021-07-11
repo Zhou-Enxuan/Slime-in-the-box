@@ -196,6 +196,10 @@ public class Blocks : MonoBehaviour
         playerSprite.flipX = true;
         anim.SetTrigger("Left");
         //updateScreen();
+        IsGameOver();
+        if (!GameManager.instance.GameOver)
+            GameManager.instance.ScoreUp();
+
     }
 
     private void moveRight()
@@ -240,6 +244,10 @@ public class Blocks : MonoBehaviour
         anim.SetTrigger("Right");
         //updateScreen();
 
+        //Score Up 
+        IsGameOver();
+        if (!GameManager.instance.GameOver)
+            GameManager.instance.ScoreUp();
 
     }
 
@@ -283,6 +291,11 @@ public class Blocks : MonoBehaviour
         player.anim.SetTrigger("Up");
         anim.SetTrigger("Up");
         //updateScreen();
+
+        //Score Up 
+        IsGameOver();
+        if (!GameManager.instance.GameOver)
+            GameManager.instance.ScoreUp();
     }
 
     private void moveDown()
@@ -326,6 +339,11 @@ public class Blocks : MonoBehaviour
         player.anim.SetTrigger("Down");
         anim.SetTrigger("Down");
         //updateScreen();
+
+        //Score Up 
+        IsGameOver();
+        if (!GameManager.instance.GameOver)
+            GameManager.instance.ScoreUp();
     }
 
     private void printArray()
@@ -437,9 +455,21 @@ public class Blocks : MonoBehaviour
         return monsterSize;
     }
 
-    private void UnlockControl()
+    public void UnlockControl()
     {
         control = true;
     }
 
+    public void LockControl()
+    {
+        control = false;
+    }
+
+    private void IsGameOver()
+    {
+        if(player.size > 6 || player.size < 1)
+        {
+            GameManager.instance.GameOver = true;
+        }
+    }
 }

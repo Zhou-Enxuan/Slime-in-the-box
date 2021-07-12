@@ -28,14 +28,14 @@ public class Menu : MonoBehaviour
 
     public void PlayGame()
     {
-        anim.SetTrigger("Start");
+        anim.SetTrigger("Start2");
         
 
     }
 
     public void CreditPage()
     {
-        SceneManager.LoadScene("CreditPage");
+        anim.SetTrigger("Credit");
     }
 
     public void BacktoMainMenu()

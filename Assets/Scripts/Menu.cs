@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public Button start;
+    public Button Credit;
+    public Button Setting;
+
     public Animator anim;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-       
-        start.onClick.AddListener(PlayGame);
-
     }
 
 
@@ -22,6 +22,9 @@ public class Menu : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            start.gameObject.SetActive(true);
+            Credit.gameObject.SetActive(true);
+            Setting.gameObject.SetActive(true);
             anim.SetTrigger("Start");
         }
     }

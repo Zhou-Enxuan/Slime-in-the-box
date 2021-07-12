@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     public TextMeshProUGUI textMesh;
 
+    public GameObject sprite;
+
     void Start()
     {
         size = 3;  

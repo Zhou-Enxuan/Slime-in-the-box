@@ -15,7 +15,8 @@ public class CreditControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(credit.transform.position.y < 720)
+        Debug.Log(credit.transform.position.y);
+        if(credit.transform.position.y < 1690)
             credit.transform.position += new Vector3(0, 1, 0) * Time.deltaTime * speed;
         else
             SceneManager.LoadScene("Menu");

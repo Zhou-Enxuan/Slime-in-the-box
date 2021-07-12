@@ -140,6 +140,7 @@ public class Blocks : MonoBehaviour
 
                 if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
+                    blocks[blockNum].monster.data = allTiles[i, j];
                     blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
                     blocks[blockNum].monster.UpdateSize();
                     blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
@@ -150,14 +151,16 @@ public class Blocks : MonoBehaviour
                 }
                 else if(blockNum == 12)
                 {
+                    player.sprite.transform.localScale = new Vector3(1.8f / 6f * player.size, 1.8f / 6f * player.size, 1);
                     blocks[blockNum].blockType = BlockType.NORMAL;
                     blocks[blockNum].SetAppear();
                 }
                 else
                 {
                     //blocks[blockNum].textCom.text = "";
-                    blocks[blockNum].monster.UpdateSize();
+                    blocks[blockNum].monster.data = allTiles[i, j];
                     blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
+                    blocks[blockNum].monster.UpdateSize();
                     blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
                     blocks[blockNum].blockType = BlockType.NORMAL;
                 }

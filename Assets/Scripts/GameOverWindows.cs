@@ -28,7 +28,7 @@ public class GameOverWindows : MonoBehaviour
     private void RestartGame()
     {
         //GameManager.instance.score = 0;
-        ////blocks.UnlockControl();
+        //blocks.UnlockControl();
         //player.ResetSize();
         //GameManager.instance.GameOver = false;
         //GameManager.instance.counter = false;

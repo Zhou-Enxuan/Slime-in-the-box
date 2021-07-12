@@ -6,9 +6,12 @@ public class Monster
 {
     public int size { get; private set;}
 
-    public Monster(int _size)
+    public int id { get; private set; }
+
+    public Monster(int _size, int _id)
     {
         size = _size;
+        id = _id;
     }
 
     ~Monster()
@@ -19,9 +22,5 @@ public class Monster
     public int getSize()
     {
         return size;
-    }
-
-    
-
-    
+    }    
 }

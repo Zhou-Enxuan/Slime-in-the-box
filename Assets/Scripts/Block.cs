@@ -15,6 +15,8 @@ public class Block : MonoBehaviour
 
     public Animator monsterAnim;
 
+    public Animator textAnim;
+
     public MonsterBehaviour monster;
 
     private bool isAppear;

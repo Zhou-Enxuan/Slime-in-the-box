@@ -103,6 +103,7 @@ MonoBehaviour:
   item: {fileID: 21300000, guid: 4a2d03b9d968c43c88844f139a30dd34, type: 3}
   blockType: 0
   monsterAnim: {fileID: 792363873380288112}
+  textAnim: {fileID: 4120579837920915588}
   monster: {fileID: 3837493488284812991}
 --- !u!1001 &474787738152338178
 PrefabInstance:
@@ -180,6 +181,11 @@ MonoBehaviour:
 --- !u!95 &792363873380288112 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 894459650029077874, guid: 1b13ad7435ace436f8d5e4fee8337381, type: 3}
+  m_PrefabInstance: {fileID: 474787738152338178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4120579837920915588 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4591971127737299846, guid: 1b13ad7435ace436f8d5e4fee8337381, type: 3}
   m_PrefabInstance: {fileID: 474787738152338178}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8228623251244918191 stripped

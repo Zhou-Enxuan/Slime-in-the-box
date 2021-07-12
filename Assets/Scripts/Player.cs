@@ -9,7 +9,12 @@ public class Player : MonoBehaviour
 
     public Animator anim;
 
-    [SerializeField] private TextMeshProUGUI textMesh;
+    public TextMeshProUGUI textMesh;
+
+    void Start()
+    {
+        size = 3;  
+    }
 
     void Update()
     {
@@ -19,5 +24,10 @@ public class Player : MonoBehaviour
     public void ResetSize()
     {
         size = 3;
+    }
+
+    private void updateSizeAnim()
+    {
+        textMesh.text = size.ToString();
     }
 }

@@ -14,7 +14,6 @@ public class AttackNumber : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-        textMesh.text = monster.data.size.ToString();
     }
 
     // Update is called once per frame

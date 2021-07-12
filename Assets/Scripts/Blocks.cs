@@ -141,6 +141,7 @@ public class Blocks : MonoBehaviour
                 if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
                     blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
+                    blocks[blockNum].monster.UpdateSize();
                     blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
                     blocks[blockNum].textCom.faceColor = new Color32(255,255,255,255);
                     blocks[blockNum].SetAppear();
@@ -155,6 +156,7 @@ public class Blocks : MonoBehaviour
                 else
                 {
                     //blocks[blockNum].textCom.text = "";
+                    blocks[blockNum].monster.UpdateSize();
                     blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
                     blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
                     blocks[blockNum].blockType = BlockType.NORMAL;

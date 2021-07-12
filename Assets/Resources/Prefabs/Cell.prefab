@@ -156,6 +156,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6651953293803921136, guid: 1b13ad7435ace436f8d5e4fee8337381, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6216565543951817848, guid: eb2fb8aee91ff4edbb68dbec821cbaf7, type: 3}
+    - target: {fileID: 7154608005988974291, guid: 1b13ad7435ace436f8d5e4fee8337381, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.175
+      objectReference: {fileID: 0}
     - target: {fileID: 9134663459542219276, guid: 1b13ad7435ace436f8d5e4fee8337381, type: 3}
       propertyPath: m_Name
       value: Monster

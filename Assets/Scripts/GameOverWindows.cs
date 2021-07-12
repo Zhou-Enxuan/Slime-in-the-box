@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverWindows : MonoBehaviour
 {
@@ -26,12 +27,16 @@ public class GameOverWindows : MonoBehaviour
 
     private void RestartGame()
     {
+        //GameManager.instance.score = 0;
+        ////blocks.UnlockControl();
+        //player.ResetSize();
+        //GameManager.instance.GameOver = false;
+        //GameManager.instance.counter = false;
+        //Destroy(transform.gameObject.GetComponentInParent<Canvas>().gameObject);
         GameManager.instance.score = 0;
-        //blocks.UnlockControl();
-        player.ResetSize();
         GameManager.instance.GameOver = false;
         GameManager.instance.counter = false;
-        Destroy(transform.gameObject.GetComponentInParent<Canvas>().gameObject);
+        SceneManager.LoadScene(2);
     }
 
 }

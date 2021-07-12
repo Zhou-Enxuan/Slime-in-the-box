@@ -492,6 +492,7 @@ public class Blocks : MonoBehaviour
         if(player.size > 6 || player.size < 1)
         {
             GameManager.instance.GameOver = true;
+            player.textMesh.gameObject.SetActive(false);
         }
     }
 

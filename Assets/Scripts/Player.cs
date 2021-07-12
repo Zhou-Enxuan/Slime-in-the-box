@@ -9,11 +9,16 @@ public class Player : MonoBehaviour
 
     public Animator anim;
 
-    [SerializeField] private TextMeshProUGUI textMesh;
+    public TextMeshProUGUI textMesh;
+
+    void Start()
+    {
+        size = 3;  
+    }
 
     void Update()
     {
-       
+        textMesh.text = size.ToString();
     }
 
     public void ResetSize()

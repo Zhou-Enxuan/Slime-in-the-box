@@ -35,15 +35,13 @@ public class Blocks : MonoBehaviour
 
     [SerializeField] private int maxSize;
 
-    private bool control;
-
     // Start is called before the first frame update
 
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        control = true;
+        GameManager.instance.control = true;
     }
 
     void Start()
@@ -64,30 +62,30 @@ public class Blocks : MonoBehaviour
 
     void Update()
     {
-        if(control)
+        if(GameManager.instance.control)
         {
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 moveRight();
-                control = false;
+                GameManager.instance.control = false;
 
             }
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 moveLeft();
-                control = false;
+                GameManager.instance.control = false;
             }
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 moveUp();
-                control = false;
+                GameManager.instance.control = false;
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 moveDown();
-                control = false;
+                GameManager.instance.control = false;
             }
         }
 
@@ -502,12 +500,12 @@ public class Blocks : MonoBehaviour
 
     public void UnlockControl()
     {
-        control = true;
+        GameManager.instance.control = true;
     }
 
     public void LockControl()
     {
-        control = false;
+        GameManager.instance.control = false;
     }
 
     private void IsGameOver()

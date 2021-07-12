@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Start() {
+        SceneManager.LoadScene("Menu");
+    }
+
     private void Update()
     {
         if(counter == false)

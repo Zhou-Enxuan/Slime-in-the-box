@@ -6,19 +6,30 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    Button start;
+    public Button start;
+    public Animator anim;
 
     private void Awake()
     {
-        start = transform.GetChild(5).GetChild(0).GetComponent<Button>();
+        anim = GetComponent<Animator>();
        
         start.onClick.AddListener(PlayGame);
 
     }
 
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetTrigger("Start");
+        }
+    }
+
     public void PlayGame()
     {
-        SceneManager.LoadScene("Main");
+        anim.SetTrigger("Start");
+        
 
     }
 
@@ -31,5 +42,14 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void switchScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
+
+
+
 
 }

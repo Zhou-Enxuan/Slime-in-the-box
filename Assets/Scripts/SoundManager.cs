@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
     public static AudioClip MainBgm;
 
     public static AudioClip ButtonSound;
+    public static AudioClip GameEndSound;
+    public static AudioClip cellMoveSound;
 
     private static int curBgm;
 
@@ -35,6 +37,8 @@ public class SoundManager : MonoBehaviour
         MenuBgm = Resources.Load<AudioClip>("Assets/Audio/Menu_bgm");
         MainBgm = Resources.Load<AudioClip>("Assets/Audio/Ingame_bgm");
         ButtonSound = Resources.Load<AudioClip>("Assets/Audio/button_press");
+        GameEndSound = Resources.Load<AudioClip>("Assets/Audio/Game_over");
+        cellMoveSound = Resources.Load<AudioClip>("Assets/Audio/move_box_sfx");
         curBgm = -1;
     }
 
@@ -87,8 +91,11 @@ public class SoundManager : MonoBehaviour
             case "button":
                 audioSources[1].PlayOneShot(ButtonSound, 2f);
                 break;
-            case "win":
-                audioSources[1].PlayOneShot(ButtonSound, 2f);
+            case "gameover":
+                audioSources[1].PlayOneShot(GameEndSound, 2f);
+                break;
+            case "cell":
+                audioSources[1].PlayOneShot(cellMoveSound, 1f);
                 break;
         }
     }

@@ -55,6 +55,10 @@ public class Menu : MonoBehaviour
         SoundManager.playSEOne("button");
     }
 
+    public void QuitGame() {
+        Debug.Log("quit");
+        Application.Quit();
+    }
 
 
 

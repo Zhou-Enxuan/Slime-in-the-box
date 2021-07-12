@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public bool control = true;
 
+    public bool paused = false;
+
     void Awake()
     {
         if (instance != null)

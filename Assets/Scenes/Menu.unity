@@ -754,6 +754,18 @@ MonoBehaviour:
           m_StringArgument: button
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1536236488}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1113670930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,8 +1135,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   GameOver: 0
-  GameOverWindow: {fileID: 5286323555875870853, guid: c97edd42c7e3fca42b612ecbf661f892, type: 3}
+  UI: {fileID: 0}
   counter: 0
+  control: 1
+  paused: 0
 --- !u!4 &1709405118
 Transform:
   m_ObjectHideFlags: 0

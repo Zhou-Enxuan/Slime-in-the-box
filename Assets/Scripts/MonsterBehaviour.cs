@@ -25,42 +25,42 @@ public class MonsterBehaviour : MonoBehaviour
 
     }
 
-    public void UpdateSize()
-    {
-        switch (data.id)
-        {
-            case 1:
-                spriteSize = 1.33f / 6f;
-                spriteSize *= data.size;
-                sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
-                break;
-            case 2:
-                spriteSize = 1.5f / 6f;
-                spriteSize *= data.size;
-                sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
-                break;
-            case 3:
-                spriteSize = 1.3f / 6f;
-                spriteSize *= data.size;
-                sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
-                break;
-            case 4:
-                spriteSize = 1.2f / 6f;
-                spriteSize *= data.size;
-                sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
-                break;
-            case 5:
-                spriteSize = 1.1f / 6f;
-                spriteSize *= data.size;
-                sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
-                break;
-            case 6:
-                spriteSize = 1f / 6f;
-                spriteSize *= data.size;
-                sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
-                break;
-            default:
-                break;
-        }
-    }
+    //public void UpdateSize()
+    //{
+    //    switch (data.id)
+    //    {
+    //        case 1:
+    //            spriteSize = 1.33f / 6f;
+    //            spriteSize *= data.size;
+    //            sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
+    //            break;
+    //        case 2:
+    //            spriteSize = 1.5f / 6f;
+    //            spriteSize *= data.size;
+    //            sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
+    //            break;
+    //        case 3:
+    //            spriteSize = 1.3f / 6f;
+    //            spriteSize *= data.size;
+    //            sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
+    //            break;
+    //        case 4:
+    //            spriteSize = 1.2f / 6f;
+    //            spriteSize *= data.size;
+    //            sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
+    //            break;
+    //        case 5:
+    //            spriteSize = 1.1f / 6f;
+    //            spriteSize *= data.size;
+    //            sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
+    //            break;
+    //        case 6:
+    //            spriteSize = 1f / 6f;
+    //            spriteSize *= data.size;
+    //            sprite.transform.localScale = new Vector3(spriteSize, spriteSize, 1);
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 }

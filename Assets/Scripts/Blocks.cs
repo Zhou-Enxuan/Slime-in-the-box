@@ -141,9 +141,9 @@ public class Blocks : MonoBehaviour
                 if ((blockNum > 5 && blockNum < 9) || (blockNum == 11 || blockNum == 13) || (blockNum > 15 && blockNum < 19))
                 {
                     blocks[blockNum].monster.data = allTiles[i, j];
-                    blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
-                    blocks[blockNum].monster.UpdateSize();
-                    blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
+                    blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].size);
+                    //blocks[blockNum].monster.UpdateSize();
+                    blocks[blockNum].textCom.text = "7" + allTiles[i, j].getSize().ToString();
                     blocks[blockNum].textCom.faceColor = new Color32(255,255,255,255);
                     blocks[blockNum].SetAppear();
                     if ((blockNum == 7 || blockNum == 11 || blockNum == 13 || blockNum == 17 ))
@@ -152,6 +152,7 @@ public class Blocks : MonoBehaviour
                 else if(blockNum == 12)
                 {
                     player.sprite.transform.localScale = new Vector3(1.8f / 6f * player.size, 1.8f / 6f * player.size, 1);
+                    player.UpdateSize();
                     blocks[blockNum].blockType = BlockType.NORMAL;
                     blocks[blockNum].SetAppear();
                 }
@@ -159,9 +160,10 @@ public class Blocks : MonoBehaviour
                 {
                     //blocks[blockNum].textCom.text = "";
                     blocks[blockNum].monster.data = allTiles[i, j];
-                    blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].id);
-                    blocks[blockNum].monster.UpdateSize();
-                    blocks[blockNum].textCom.text = allTiles[i, j].getSize().ToString();
+                    blocks[blockNum].monsterAnim.SetFloat("Blend", allTiles[i, j].size);
+                    //blocks[blockNum].monster.UpdateSize();
+                    blocks[blockNum].textCom.text = "7" + allTiles[i, j].getSize().ToString();
+                    blocks[blockNum].textCom.faceColor = new Color32(255, 255, 255, 0);
                     blocks[blockNum].blockType = BlockType.NORMAL;
                 }
 
@@ -175,6 +177,10 @@ public class Blocks : MonoBehaviour
     private void moveLeft()
     {
         HittingBlock = blocks[7];
+        blocks[1].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[2].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[3].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[7].textCom.transform.parent.GetComponent<AttackNumber>().CalculateSize();
         int randomSize = CalculateMonsterSize();
         //补充第一行
         for (int col = 0; col < height; col++) {
@@ -224,6 +230,10 @@ public class Blocks : MonoBehaviour
     private void moveRight()
     {
         HittingBlock = blocks[17];
+        blocks[21].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[22].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[23].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[17].textCom.transform.parent.GetComponent<AttackNumber>().CalculateSize();
         //补充最后一行
         for (int col = 0; col < height; col++) {
             int colLength = width;
@@ -275,6 +285,10 @@ public class Blocks : MonoBehaviour
     private void moveUp()
     {
         HittingBlock = blocks[11];
+        blocks[5].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[10].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[15].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[11].textCom.transform.parent.GetComponent<AttackNumber>().CalculateSize();
         //补充第一列
         for (int row = 0; row < width; row++) {
             int rowLength = height;
@@ -325,6 +339,10 @@ public class Blocks : MonoBehaviour
     private void moveDown()
     {
         HittingBlock = blocks[13];
+        blocks[9].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[14].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[19].textCom.faceColor = new Color32(255, 255, 255, 255);
+        blocks[13].textCom.transform.parent.GetComponent<AttackNumber>().CalculateSize();
         //补充最后一列
         for (int row = 0; row < width; row++) {
             int rowLength = height;

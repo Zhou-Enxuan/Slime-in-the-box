@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        textMesh.text = size.ToString();
     }
 
     public void ResetSize()
@@ -28,8 +27,8 @@ public class Player : MonoBehaviour
         size = 3;
     }
 
-    private void updateSizeAnim()
+    public void UpdateSize()
     {
-        textMesh.text = size.ToString();
+        textMesh.text = "7" + size.ToString();
     }
 }

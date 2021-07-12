@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DiffValue: 0
+  sprite: {fileID: 5100125470834760342}
 --- !u!1001 &7427967862201706071
 PrefabInstance:
   m_ObjectHideFlags: 0

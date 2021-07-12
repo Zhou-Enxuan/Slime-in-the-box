@@ -91,12 +91,12 @@ ScriptedImporter:
   rigSpriteImportData:
   - name: 1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 3
       y: 152
       width: 115
       height: 140
@@ -113,8 +113,8 @@ ScriptedImporter:
     uvTransform: {x: -97, y: 104}
   - name: 2
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2

@@ -22,7 +22,7 @@ public class AttackNumber : MonoBehaviour
 
     }
 
-    private void CalculateSize()
+    public void CalculateSize()
     {
         if (player.size >= monster.data.size)
             textMesh.text = "+" + (player.size - monster.data.size).ToString();

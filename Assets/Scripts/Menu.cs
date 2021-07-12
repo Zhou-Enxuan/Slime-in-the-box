@@ -51,6 +51,9 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
+    public void ButtonSoundEF() {
+        SoundManager.playSEOne("button");
+    }
 
 
 

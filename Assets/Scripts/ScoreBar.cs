@@ -87,6 +87,6 @@ public class ScoreBar : MonoBehaviour
         GameManager.instance.score = 0;
         GameManager.instance.GameOver = false;
         GameManager.instance.counter = false;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }

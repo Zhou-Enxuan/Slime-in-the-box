@@ -62,7 +62,7 @@ public class Blocks : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.instance.control)
+        if(GameManager.instance.control && !GameManager.instance.paused)
         {
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -218,6 +218,7 @@ public class Blocks : MonoBehaviour
         player.anim.SetTrigger("Horizontal");
         playerSprite.flipX = true;
         anim.SetTrigger("Left");
+        SoundManager.playSEOne("cell");
         //updateScreen();
         IsGameOver();
         if (!GameManager.instance.GameOver)
@@ -271,6 +272,7 @@ public class Blocks : MonoBehaviour
         UpdateViewTiles();
         player.anim.SetTrigger("Horizontal");
         playerSprite.flipX = false;
+        SoundManager.playSEOne("cell");
         anim.SetTrigger("Right");
         //updateScreen();
         //Score Up 
@@ -326,6 +328,7 @@ public class Blocks : MonoBehaviour
         UpdateViewTiles();
         player.anim.SetTrigger("Up");
         anim.SetTrigger("Up");
+        SoundManager.playSEOne("cell");
         //updateScreen();
 
         //Score Up 
@@ -381,6 +384,7 @@ public class Blocks : MonoBehaviour
         UpdateViewTiles();
         player.anim.SetTrigger("Down");
         anim.SetTrigger("Down");
+        SoundManager.playSEOne("cell");
         //updateScreen();
 
         //Score Up 

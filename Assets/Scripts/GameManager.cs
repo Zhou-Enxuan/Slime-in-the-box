@@ -11,15 +11,19 @@ public class GameManager : MonoBehaviour
 
     public bool GameOver;
 
-    public GameObject GameOverWindow;
+    public GameObject UI;
 
     public bool counter = false;
+
+    public bool control = true;
 
     void Awake()
     {
         if (instance != null)
         {
-            GameObject.Destroy(instance);
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(this);
         }
         else
         {
@@ -57,7 +61,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over");
             if (counter == false)
             {
-                Instantiate(GameOverWindow, this.transform.position, this.transform.rotation);
+                ScoreBar.instance.showBoard();
                 counter = true;
             }
         }
